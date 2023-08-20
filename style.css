@@ -5,8 +5,11 @@
     --accent-color-2: #ff69b4;
     --white-15: rgba(255, 255, 255, 0.15);
     --white-25: rgba(255, 255, 255, 0.25);
-    --white-50: rgba(255, 255, 255, 0.5);
+    --white-50: rgba(255, 255, 255, 0.50);
+    --white-75: rgba(255, 255, 255, 0.75);
     --white-100: rgba(255, 255, 255, 1);
+    --black-50: rgba(0, 0, 0, 0.50);
+    --black-100: rgba(0, 0, 0, 1);
     --transparent-color: rgba(0, 0, 0, 0);
 }
 
@@ -34,7 +37,7 @@ body::after {
 } /* this is for preloading image to make nav bar scrooling look smooth */
 
 #blob {
-    background-color: white;
+    background-color: var(--white-100);
     height: 34vmax;
     aspect-ratio: 1;
     position: fixed;
@@ -129,7 +132,7 @@ nav ul li {
 
 nav ul li a {
     display: block;
-    color: white;
+    color: var(--white-100);
     font-size: large;
     text-transform: capitalize;
     text-decoration: none;
@@ -157,7 +160,7 @@ nav.scrolled .dropdown {
 }
 
 nav.scrolled ul li a {
-    color: black;
+    color: var(--black-100);
 }
 
 nav.scrolled ul li a:hover {
@@ -198,21 +201,21 @@ nav.scrolled img {
 header h1 {
     font-weight: 600;
     text-align: center;
-    color: white;
+    color: var(--white-100);
 }
 
 header h3 {
     font-size: 1rem;
     font-weight: 300;
     text-align: center;
-    color: #eeeeee;
+    color: var(--white-75);
 }
 
 header button {
     position: relative;
     left: 50%;
     transform: translate(-50%);
-    color: white;
+    color: var(--white-100);
     text-transform: capitalize;
     font-size: 1rem;
     padding: 1rem calc(2rem - 10px) 1rem 2rem;
@@ -280,6 +283,7 @@ header .arrowDown i:hover {
 }
 
 .subSections:not(header .subSections) > h1 {
+    color: var(--black-100);
     font-size: 2.5rem;
     text-align: center;
     text-transform: capitalize;
@@ -293,7 +297,7 @@ header .arrowDown i:hover {
     left: -2.5%;
     height: 4px;
     width: 105%;
-    background-color: black;
+    background-color: var(--black-100);
     margin: 1rem 0 3rem 0;
     border-radius: 1rem;
 }
@@ -335,6 +339,7 @@ header .arrowDown i:hover {
 }
 
 .serviceDiv .accordion {
+    color: var(--black-100);
     background-color: var(--transparent-color);
     cursor: pointer;
     width: 100%;
@@ -344,7 +349,7 @@ header .arrowDown i:hover {
     margin: 4px 0 0 0;
     border: none;
     outline: none;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--black-100);
     border-radius: 1rem 1rem 0 0;
     transition: 300ms;
 }
@@ -357,6 +362,7 @@ header .arrowDown i:hover {
 
 .accordion:after {
     content: '\276F';
+    color: var(--black-100);
     font-weight: bold;
     float: right;
     margin-right: 6px;
@@ -371,6 +377,7 @@ header .arrowDown i:hover {
 }
 
 .panel {
+  color: var(--black-100);
   padding: 0 1rem;
   max-height: 0;
   overflow: hidden;
@@ -408,6 +415,7 @@ header .arrowDown i:hover {
 
 
 .aboutSec p {
+    color: var(--black-100);
     font-size: 1.1rem;
 }
 
@@ -433,7 +441,7 @@ header .arrowDown i:hover {
     background-color: var(--white-25);
     padding: 0.75rem;
     border-radius: 4px;
-    border: 2px solid black;
+    border: 2px solid var(--black-100);
     outline: none;
 }
 
@@ -449,7 +457,7 @@ header .arrowDown i:hover {
 }
 
 .contactSec #contSubmit:hover {
-    color: white;
+    color: var(--white-100);
     background-color: var(--accent-color-1);
 }
 
@@ -484,17 +492,17 @@ footer ul li {
 
 footer ul li:first-child {
     font-size: 1.4rem;
-    color: gray;
+    color: var(--black-50);
     text-transform: uppercase;
     margin: 0 0 1rem 0;
-    border-left: solid 2px #7f59db;
+    border-left: solid 2px var(--accent-color-1);
 }
 
 footer li a {
     display: block;
     font-size: 1.1rem;
     text-decoration: none;
-    color: black;
+    color: var(--black-100);
     transition: 300ms;
 }
 
@@ -523,7 +531,7 @@ footer ul li a:hover::before {
 
 .inp {
     display: flex;
-    border: 2px solid black;
+    border: 2px solid var(--black-100);
     border-radius: 4px;
     padding: 8px;
     min-width: calc(30vmin + 80px);
@@ -549,7 +557,7 @@ footer input[type="email"] {
 
 footer input[type="submit"] {
     background-color: var(--accent-color-1);
-    color: white;
+    color: var(--white-100);
     border: 2px solid var(--accent-color-1);
     border-radius: 0 4px 4px 0;
     transition: 100ms;
@@ -564,7 +572,7 @@ footer input[type="submit"]:active {
 .privacySec a {
     display: inline-block;
     text-decoration: none;
-    color: black;
+    color: var(--black-100);
     margin: 0 0.5rem;
     transition: 250ms;
 }
