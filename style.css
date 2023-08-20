@@ -36,7 +36,7 @@ body {
 
 body::after {
     position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
-    content: var(--logo-dark);
+    content: var(--logo-light) var(--logo-dark);
 } /* this is for preloading image to make nav bar scrooling look smooth */
 
 #blob {
@@ -155,6 +155,8 @@ nav img {
     max-height: 50px;
 }
 
+nav img.dark {content: var(--logo-dark);}
+
 nav.scrolled,
 nav.scrolled .dropdown {
     background-color: var(--white-50);
@@ -173,6 +175,8 @@ nav.scrolled ul li a:hover {
 nav.scrolled img {
     content: var(--logo-dark);
 }
+
+nav.scrolled img.dark {content: var(--logo-light);}
 
 .dropdown {
     visibility: hidden;
