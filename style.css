@@ -1,0 +1,650 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --accent-color-1: #7f59db;
+    --accent-color-2: #ff69b4;
+    --white-15: rgba(255, 255, 255, 0.15);
+    --white-25: rgba(255, 255, 255, 0.25);
+    --white-50: rgba(255, 255, 255, 0.5);
+    --white-100: rgba(255, 255, 255, 1);
+    --transparent-color: rgba(0, 0, 0, 0);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background: rgb(255,105,180);
+    background: linear-gradient(172deg, rgba(255,105,180,1) 0%, rgba(192,96,203,1) 6%, rgba(127,89,219,0.75) 12%, rgba(0,0,0,0) 24%);
+    background-color: var(--white-100);
+}
+
+body::after {
+    position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
+    content: url(assets/logo\ dark.png);
+} /* this is for preloading image to make nav bar scrooling look smooth */
+
+#blob {
+    background-color: white;
+    height: 34vmax;
+    aspect-ratio: 1;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, var(--accent-color-2), var(--accent-color-1));
+    animation: rotate 20s infinite;
+    opacity: 0.8;
+    z-index: -2;
+}
+
+#blur {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+    backdrop-filter: blur(12vmax);
+    -webkit-backdrop-filter: blur(12vmax);
+}
+
+
+/* ---------- universal ---------- */
+
+
+.mp-0 {margin: 0;padding: 0;}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(100px) scale(1.05);
+    transition: 300ms 0ms, opacity 700ms 100ms, filter 700ms 100ms,transform 700ms 100ms !important;
+}
+
+.flipUp {
+    opacity: 1;
+    transform: translateY(0px) scale(1) rotateX(90deg);
+    transition-delay: calc(120ms*var(--img)) !important;
+}
+
+.fadeIn {
+    transform: translateY(0px);
+    transition: opacity 300ms 100ms;
+}
+
+.aboutP {
+    transition-delay: calc(120ms*var(--abt)) !important;
+}
+
+.footerA {
+    transition-delay: calc(100ms*var(--footerA)) !important;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0px) scale(1) rotateX(0deg);
+}
+
+@media (prefers-reduced-motion) {
+    .hidden {
+        transition: none;
+    }
+}
+
+
+/* ---------- navbar ---------- */
+
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 12px 0;
+    z-index: 2;
+    transition: background-color 300ms;
+    animation: nav 500ms;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+}
+
+nav ul li {
+    flex-shrink: 0;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    font-size: large;
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    margin: 0 4px;
+    border-radius: 4px;
+    transition: 300ms;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color-1);
+    transform: scale(1.1);
+}
+
+nav img {
+    content: url(assets/logo\ light.png);
+    max-height: 50px;
+}
+
+nav.scrolled,
+nav.scrolled .dropdown {
+    background-color: var(--white-50);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+nav.scrolled ul li a {
+    color: black;
+}
+
+nav.scrolled ul li a:hover {
+    color: var(--accent-color-1);
+}
+
+nav.scrolled img {
+    content: url(assets/logo\ dark.png);
+}
+
+.dropdown {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    overflow: hidden;
+    z-index: 1;
+    background-color: rgb(40, 40, 40);
+    border-radius: 4px;
+    transform: translateY(-30px) scaleY(0.8);
+    transform-origin: top;
+    transition: 250ms;
+}
+/* line 98 */
+
+.dropdownbtn {
+    display: none;
+}
+.dropdownbtn:hover .dropdown {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+}
+
+
+/* ---------- header ---------- */
+
+
+header h1 {
+    font-weight: 600;
+    text-align: center;
+    color: white;
+}
+
+header h3 {
+    font-size: 1rem;
+    font-weight: 300;
+    text-align: center;
+    color: #eeeeee;
+}
+
+header button {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    color: white;
+    text-transform: capitalize;
+    font-size: 1rem;
+    padding: 1rem calc(2rem - 10px) 1rem 2rem;
+    margin: 1rem 0 0 0;
+    border: 2px solid var(--accent-color-1);
+    border-radius: 8px;
+    background: linear-gradient(140deg, var(--accent-color-1), var(--accent-color-2));
+    background-size: 300%;
+    background-position: 0%;
+    transition:background-position 300ms 0s;
+}
+
+header button:hover {
+    background-position: 30%;
+}
+
+header button i {
+    margin: 0 8px 0 2px;
+    padding: 0;
+    transition: margin 300ms;
+}
+
+header button:hover i {
+    margin: 0 0 0 10px;
+}
+
+header .arrowDown {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+header .arrowDown i {
+    font-size: 2rem;
+    color: var(--white-50);
+    transition: 400ms;
+    animation: arrowDown 3s ease-in-out 1s infinite;
+}
+
+header .arrowDown i:hover {
+    animation: none;
+    color: var(--white-100);
+}
+
+
+/* ---------- service section ---------- */
+
+
+.sections {
+    background-color: var(--transparent-color);
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 100vh;
+}
+
+.subSections {
+    width: 70%;
+    max-width: 1500px;
+    padding: 8rem;
+    margin: 0;
+    border-radius: 1rem;
+    background-color: var(--white-15);
+}
+
+.subSections:not(header .subSections) > h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.subSections:not(header .subSections) > h1::after {
+    content: ' ';
+    display: block;
+    position: relative;
+    bottom: 0;
+    left: -2.5%;
+    height: 4px;
+    width: 105%;
+    background-color: black;
+    margin: 1rem 0 3rem 0;
+    border-radius: 1rem;
+}
+
+.subSections h1.hidden::after {
+    transform: scaleX(0);
+    transition: transform 700ms;
+}
+
+.subSections h1.show::after {
+    transform: scaleX(1);
+}
+
+.serviceDiv span {
+    color: var(--accent-color-1);
+    text-transform: uppercase;
+}
+
+.serviceDiv,
+.contactSec form div,
+.imgContainer {
+    display: flex;
+}
+
+.serviceDiv {
+    gap: 1rem;
+}
+
+.serviceDiv div {
+    flex-grow: 1;
+}
+
+.serviceDiv #title {
+    flex-basis: 35%;
+}
+
+.accCont {
+    flex-basis: 65%;
+}
+
+.serviceDiv .accordion {
+    background-color: var(--transparent-color);
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: left;
+    padding: 1rem;
+    margin: 4px 0 0 0;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid black;
+    border-radius: 1rem 1rem 0 0;
+    transition: 300ms;
+}
+
+.active, .accordion:hover {
+    background-color: var(--white-25) !important;
+    color: var(--accent-color-1);
+    border-color: var(--accent-color-1) !important;
+}
+
+.accordion:after {
+    content: '\276F';
+    font-weight: bold;
+    float: right;
+    margin-right: 6px;
+    transform: rotate(90deg);
+    transition: 300ms;
+}
+
+.active:after {
+    color: var(--accent-color-1);
+    content: "\276F";
+    transform: rotate(-90deg);
+}
+
+.panel {
+  padding: 0 1rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: var(--white-15);
+  border-radius: 0 0 1rem 1rem;
+  margin: 0 0 4px 0;
+}
+
+
+/* ---------- gallery section ---------- */
+
+
+/* line 251, 378 */
+
+.imgContainer {
+    gap: 4px;
+    padding: 0 8px;
+}
+
+.imgWrapper {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.imgWrapper img {
+    border-radius: 8px;
+    aspect-ratio: 5 / 3;
+    object-fit: cover;
+    transition: 500ms;
+}
+
+
+/* ---------- About us section ---------- */
+
+
+.aboutSec p {
+    font-size: 1.1rem;
+}
+
+
+/* ---------- contact section ---------- */
+
+
+/* line 250 */
+
+.contactSec form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contactSec input,
+.contactSec textarea {
+    flex-grow: 1;
+    margin: 0.5rem;
+}
+
+.contactSec input,
+.contactSec textarea {
+    background-color: var(--white-25);
+    padding: 0.75rem;
+    border-radius: 4px;
+    border: 2px solid black;
+    outline: none;
+}
+
+.contactSec input:focus,
+.contactSec textarea:focus {
+    border-color: var(--accent-color-1);
+}
+
+.contactSec #contSubmit {
+    color: var(--accent-color-1);
+    border-color: var(--accent-color-1);
+    transition: 300ms;
+}
+
+.contactSec #contSubmit:hover {
+    color: white;
+    background-color: var(--accent-color-1);
+}
+
+
+/* ---------- footer ---------- */
+
+
+footer {
+    min-height: 50vh;
+    padding: 8rem 10rem;
+    background-color: var(--white-15);
+}
+
+footer .footerSec {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+footer ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 2rem;
+}
+
+footer ul li {
+    text-transform: capitalize;
+    padding: 0 0 0 1rem;
+    margin: 0.2rem 0;
+}
+
+footer ul li:first-child {
+    font-size: 1.4rem;
+    color: gray;
+    text-transform: uppercase;
+    margin: 0 0 1rem 0;
+    border-left: solid 2px #7f59db;
+}
+
+footer li a {
+    display: block;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: black;
+    transition: 300ms;
+}
+
+footer li a:hover {
+    color: var(--accent-color-1);
+    transform: scale(1.1);
+}
+
+footer ul li a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 2px;
+    height: 100%;
+    transform: scaleY(0);
+    background-color: var(--accent-color-1);
+    transform-origin: bottom left;
+    transition: transform 300ms;
+}
+
+footer ul li a:hover::before {
+    transform: scaleY(1);
+    transform-origin: top left;
+}
+
+.inp {
+    display: flex;
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 8px;
+    min-width: calc(30vmin + 80px);
+    max-width: 10rem;
+}
+
+footer input {
+    border: none;
+    outline: none;
+    padding: 8px;
+    flex-grow: 1;
+}
+
+footer .inp:hover {
+    border-color: var(--accent-color-1);
+}
+
+footer input[type="email"] {
+    background-color: var(--white-25);
+    border-radius: 4px 0 0 4px;
+    max-width: 30vmin;
+}
+
+footer input[type="submit"] {
+    background-color: var(--accent-color-1);
+    color: white;
+    border: 2px solid var(--accent-color-1);
+    border-radius: 0 4px 4px 0;
+    transition: 100ms;
+    flex-grow: 0;
+}
+
+footer input[type="submit"]:active {
+    color: var(--accent-color-1);
+    background-color: var(--white-25);
+}
+
+.privacySec a {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    margin: 0 0.5rem;
+    transition: 250ms;
+}
+
+.privacySec a:hover {
+    color: var(--accent-color-1);
+    scale: 1.1;
+}
+
+.privacySec i {
+    font-size: 1.5rem;
+}
+
+
+/* ---------- responsive ---------- */
+
+
+.lgs {display: none;}
+
+@media (max-width:992px) {
+    .lgh {display: none !important;}
+    .lgs {display: block;}
+    .dropdownbtn {display: block;}
+    .subSections {width: 75%;}
+    footer {padding: 8rem 5rem;}
+    .footerSec {flex-direction: column;gap: 2rem;}
+    .privacySec {text-align: center;}
+}
+@media (max-width:768px) {
+    .mdh {display: none !important;}
+    .serviceDiv {flex-direction: column;gap: 2rem;}
+    .contactSec form div {flex-direction: column;}
+    .dropdown {right: 10px;}
+    .subSections {
+        width: 80%;
+        padding: 5rem 3rem;
+    }
+    h1 {font-size: 1.8rem !important;}
+}
+@media (max-width:576px) {
+    .subSections {
+        width: 100%;
+    }
+}
+
+
+/* ---------- animations ---------- */
+
+
+@keyframes arrowDown {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    10% {
+        transform: translateY(-10px) scale(1.1);
+    }
+    20%  {
+        transform: translateY(0) scale(1);
+    }
+}
+@keyframes rotate {
+    from {
+        rotate: 0deg;
+    }
+
+    50% {
+        scale: 1 1.5;
+    }
+
+    to {
+        rotate: 360deg;
+    }
+}
+@keyframes nav {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
