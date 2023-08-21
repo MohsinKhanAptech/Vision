@@ -78,7 +78,7 @@ if (typeof(Storage) !== "undefined") {
 function changeTheme() {
     if (theme == 'light') {
         document.documentElement.style.cssText =
-            "--accent-color-1: #6a3ed5;--accent-color-2: #ff148a;--white-15: rgba(45, 45, 45, 0.15);--white-25: rgba(45, 45, 45, 0.25);--white-50: rgba(45, 45, 45, 0.50);--white-75: rgba(45, 45, 45, 0.75);--white-100: rgba(45, 45, 45, 1);--black-50: rgba(235, 235, 235, 0.50);--black-100: rgba(235, 235, 235, 1);--logo-light: url(assets/logo\ dark.png);--logo-dark: url(assets/logo\ light.png);";
+            "--accent-color-1: #6a3ed5;--accent-color-2: #ff148a;--white-15: rgba(25, 20, 35, 0.15);--white-25: rgba(25, 20, 35, 0.25);--white-50: rgba(25, 20, 35, 0.50);--white-75: rgba(25, 20, 35, 0.75);--white-100: rgba(25, 20, 35, 1);--black-50: rgba(235, 235, 235, 0.50);--black-100: rgba(235, 235, 235, 1);--logo-light: url(assets/logo\ dark.png);--logo-dark: url(assets/logo\ light.png);";
         document.getElementById("logoImg").classList.add("dark")
         localStorage.theme = "dark";
     } else {
