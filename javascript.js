@@ -23,16 +23,16 @@ for (let i = 0; i < acc.length; i++) {
 }
 
 function showPanel(elem) {
-  hidePanels();
-  elem.classList.add("active");
-  elem.nextElementSibling.style.maxHeight = elem.nextElementSibling.scrollHeight + "px";
+    hidePanels();
+    elem.classList.add("active");
+    elem.nextElementSibling.style.maxHeight = elem.nextElementSibling.scrollHeight + "px";
 }
 
 function hidePanels() {
-  for (let i = 0; i < panel.length; i++) {
-      panel[i].style.maxHeight = null;
-      acc[i].classList.remove("active");
-  }
+    for (let i = 0; i < panel.length; i++) {
+        panel[i].style.maxHeight = null;
+        acc[i].classList.remove("active");
+    }
 }
 
 // animation on scroll
@@ -80,12 +80,10 @@ if (typeof(Storage) !== "undefined") {
 if (theme == 'light') {
     document.documentElement.style.cssText = "";
     document.getElementById("logoImg").classList.remove("dark");
-    localStorage.theme = "light";
 } else {
     document.documentElement.style.cssText =
     "--accent-color-1:#6a3ed5;--accent-color-2:#ff148a;--white-15:#19142326;--white-25:#19142340;--white-50:#19142380;--white-75:#191423bf;--white-100:#191423;--black-50:#ebebeb80;--black-100:rgba(235,235,235,1);";
     document.getElementById("logoImg").classList.add("dark");
-    localStorage.theme = "dark";
     checkbox.checked = "true"
 }
 
