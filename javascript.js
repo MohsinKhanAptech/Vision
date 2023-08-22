@@ -78,13 +78,12 @@ if (typeof(Storage) !== "undefined") {
 }
 
 if (theme == 'light') {
-    document.documentElement.style.cssText =
-        "--accent-color-1: #7f59db;--accent-color-2: #ff69b4;--white-15: rgba(255, 255, 255, 0.15);--white-25: rgba(255, 255, 255, 0.25);--white-50: rgba(255, 255, 255, 0.50);--white-75: rgba(255, 255, 255, 0.75);--white-100: rgba(255, 255, 255, 1);--black-50: rgba(0, 0, 0, 0.50);--black-100: rgba(0, 0, 0, 1);";
+    document.documentElement.style.cssText = "";
     document.getElementById("logoImg").classList.remove("dark");
     localStorage.theme = "light";
 } else {
     document.documentElement.style.cssText =
-        "--accent-color-1: #6a3ed5;--accent-color-2: #ff148a;--white-15: rgba(25, 20, 35, 0.15);--white-25: rgba(25, 20, 35, 0.25);--white-50: rgba(25, 20, 35, 0.50);--white-75: rgba(25, 20, 35, 0.75);--white-100: rgba(25, 20, 35, 1);--black-50: rgba(235, 235, 235, 0.50);--black-100: rgba(235, 235, 235, 1);";
+    "--accent-color-1:#6a3ed5;--accent-color-2:#ff148a;--white-15:#19142326;--white-25:#19142340;--white-50:#19142380;--white-75:#191423bf;--white-100:#191423;--black-50:#ebebeb80;--black-100:rgba(235,235,235,1);";
     document.getElementById("logoImg").classList.add("dark");
     localStorage.theme = "dark";
     checkbox.checked = "true"
@@ -93,12 +92,11 @@ if (theme == 'light') {
 function changeTheme() {
     if (theme == 'light') {
         document.documentElement.style.cssText =
-            "--accent-color-1: #6a3ed5;--accent-color-2: #ff148a;--white-15: rgba(25, 20, 35, 0.15);--white-25: rgba(25, 20, 35, 0.25);--white-50: rgba(25, 20, 35, 0.50);--white-75: rgba(25, 20, 35, 0.75);--white-100: rgba(25, 20, 35, 1);--black-50: rgba(235, 235, 235, 0.50);--black-100: rgba(235, 235, 235, 1);";
+        "--accent-color-1:#6a3ed5;--accent-color-2:#ff148a;--white-15:#19142326;--white-25:#19142340;--white-50:#19142380;--white-75:#191423bf;--white-100:#191423;--black-50:#ebebeb80;--black-100:#ebebeb;";
         document.getElementById("logoImg").classList.add("dark");
         localStorage.theme = "dark";
     } else {
-        document.documentElement.style.cssText =
-            "--accent-color-1: #7f59db;--accent-color-2: #ff69b4;--white-15: rgba(255, 255, 255, 0.15);--white-25: rgba(255, 255, 255, 0.25);--white-50: rgba(255, 255, 255, 0.50);--white-75: rgba(255, 255, 255, 0.75);--white-100: rgba(255, 255, 255, 1);--black-50: rgba(0, 0, 0, 0.50);--black-100: rgba(0, 0, 0, 1);";
+        document.documentElement.style.cssText = "";
         document.getElementById("logoImg").classList.remove("dark");
         localStorage.theme = "light";
     }
