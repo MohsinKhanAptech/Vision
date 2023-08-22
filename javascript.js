@@ -63,6 +63,9 @@ window.onpointermove = event => {
 
 // change theme
 
+const checkbox = document.getElementById("checkbox");
+checkbox.addEventListener("change", () => {changeTheme(); location.reload});
+
 let theme;
 if (typeof(Storage) !== "undefined") {
     theme = localStorage.theme;
@@ -84,6 +87,7 @@ if (theme == 'light') {
         "--accent-color-1: #6a3ed5;--accent-color-2: #ff148a;--white-15: rgba(25, 20, 35, 0.15);--white-25: rgba(25, 20, 35, 0.25);--white-50: rgba(25, 20, 35, 0.50);--white-75: rgba(25, 20, 35, 0.75);--white-100: rgba(25, 20, 35, 1);--black-50: rgba(235, 235, 235, 0.50);--black-100: rgba(235, 235, 235, 1);";
     document.getElementById("logoImg").classList.add("dark");
     localStorage.theme = "dark";
+    checkbox.checked = "true"
 }
 
 function changeTheme() {
@@ -100,6 +104,3 @@ function changeTheme() {
     }
     theme = localStorage.theme;
 }
-
-const checkbox = document.getElementById("checkbox");
-checkbox.addEventListener("change", () => {changeTheme(); location.reload});
