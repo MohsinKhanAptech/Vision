@@ -66,29 +66,40 @@ window.onpointermove = event => {
 let theme;
 if (typeof(Storage) !== "undefined") {
     theme = localStorage.theme;
-    if (theme == null || theme == undefined) {
+    if (theme == undefined) {
         localStorage.theme = "light";
         theme = localStorage.theme;
-        console.log(theme)
     }
 } else {
-    window.alert("webStorage is not supported by your browser. So, the last used theme will not be saved")
+    window.alert("webStorage is not supported by your browser. So, the last used theme will not be saved");
+}
+
+if (theme == 'light') {
+    document.documentElement.style.cssText =
+        "--accent-color-1: #7f59db;--accent-color-2: #ff69b4;--white-15: rgba(255, 255, 255, 0.15);--white-25: rgba(255, 255, 255, 0.25);--white-50: rgba(255, 255, 255, 0.50);--white-75: rgba(255, 255, 255, 0.75);--white-100: rgba(255, 255, 255, 1);--black-50: rgba(0, 0, 0, 0.50);--black-100: rgba(0, 0, 0, 1);";
+    document.getElementById("logoImg").classList.remove("dark");
+    localStorage.theme = "light";
+} else {
+    document.documentElement.style.cssText =
+        "--accent-color-1: #6a3ed5;--accent-color-2: #ff148a;--white-15: rgba(25, 20, 35, 0.15);--white-25: rgba(25, 20, 35, 0.25);--white-50: rgba(25, 20, 35, 0.50);--white-75: rgba(25, 20, 35, 0.75);--white-100: rgba(25, 20, 35, 1);--black-50: rgba(235, 235, 235, 0.50);--black-100: rgba(235, 235, 235, 1);";
+    document.getElementById("logoImg").classList.add("dark");
+    localStorage.theme = "dark";
 }
 
 function changeTheme() {
     if (theme == 'light') {
         document.documentElement.style.cssText =
-            "--accent-color-1: #6a3ed5;--accent-color-2: #ff148a;--white-15: rgba(25, 20, 35, 0.15);--white-25: rgba(25, 20, 35, 0.25);--white-50: rgba(25, 20, 35, 0.50);--white-75: rgba(25, 20, 35, 0.75);--white-100: rgba(25, 20, 35, 1);--black-50: rgba(235, 235, 235, 0.50);--black-100: rgba(235, 235, 235, 1);--logo-light: url(assets/logo\ dark.png);--logo-dark: url(assets/logo\ light.png);";
-        document.getElementById("logoImg").classList.add("dark")
+            "--accent-color-1: #6a3ed5;--accent-color-2: #ff148a;--white-15: rgba(25, 20, 35, 0.15);--white-25: rgba(25, 20, 35, 0.25);--white-50: rgba(25, 20, 35, 0.50);--white-75: rgba(25, 20, 35, 0.75);--white-100: rgba(25, 20, 35, 1);--black-50: rgba(235, 235, 235, 0.50);--black-100: rgba(235, 235, 235, 1);";
+        document.getElementById("logoImg").classList.add("dark");
         localStorage.theme = "dark";
     } else {
         document.documentElement.style.cssText =
-            "--accent-color-1: #7f59db;--accent-color-2: #ff69b4;--white-15: rgba(255, 255, 255, 0.15);--white-25: rgba(255, 255, 255, 0.25);--white-50: rgba(255, 255, 255, 0.50);--white-75: rgba(255, 255, 255, 0.75);--white-100: rgba(255, 255, 255, 1);--black-50: rgba(0, 0, 0, 0.50);--black-100: rgba(0, 0, 0, 1);--transparent-color: rgba(0, 0, 0, 0);--logo-light: url(assets/logo\ light.png);--logo-dark: url(assets/logo\ dark.png);";
-        document.getElementById("logoImg").classList.remove("dark")
+            "--accent-color-1: #7f59db;--accent-color-2: #ff69b4;--white-15: rgba(255, 255, 255, 0.15);--white-25: rgba(255, 255, 255, 0.25);--white-50: rgba(255, 255, 255, 0.50);--white-75: rgba(255, 255, 255, 0.75);--white-100: rgba(255, 255, 255, 1);--black-50: rgba(0, 0, 0, 0.50);--black-100: rgba(0, 0, 0, 1);";
+        document.getElementById("logoImg").classList.remove("dark");
         localStorage.theme = "light";
     }
     theme = localStorage.theme;
 }
 
-const checkbox = document.getElementById("checkbox")
-checkbox.addEventListener("change", () => {changeTheme(); location.reload})
+const checkbox = document.getElementById("checkbox");
+checkbox.addEventListener("change", () => {changeTheme(); location.reload});
