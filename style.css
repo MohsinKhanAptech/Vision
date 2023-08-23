@@ -364,7 +364,7 @@ header .arrowDown i:hover {
 
 .active, .accordion:hover {
     background-color: var(--white-25) !important;
-    color: var(--accent-color-1);
+    color: var(--accent-color-1) !important;
     border-color: var(--accent-color-1) !important;
 }
 
