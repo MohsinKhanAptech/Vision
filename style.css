@@ -401,15 +401,13 @@ header .arrowDown i:hover {
 
 /* line 251, 434 */
 
-.imgContainer,
-.imgContainer .col {
-    gap: 4px;
-}
+.gap {gap: 4px;}
 
 .imgWrapper {
     aspect-ratio: 5 / 3;
     border-radius: 8px;
     overflow: hidden;
+    /* transition: opacity 500ms 0s, visibility 500ms 0s, height 1s 0s, width 1s 0s; */
 }
 
 .imgWrapper img {
@@ -421,9 +419,12 @@ header .arrowDown i:hover {
 }
 
 .imgWrapper img:hover {
-    scale: 1.25;
+    transform: scale(1.25);
     filter: saturate(115%) contrast(110%);
 }
+
+.disableImg {visibility: hidden;opacity: 0;height: 0;width: 0;}
+.activeImg {visibility: visible;opacity: 1;height: auto;width: auto;}
 
 
 /* ---------- About us section ---------- */
