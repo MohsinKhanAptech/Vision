@@ -69,42 +69,6 @@ body::after {
 
 .mp-0 {margin: 0;padding: 0;}
 
-.hidden {
-    opacity: 0;
-    transform: translateY(100px) scale(1.05);
-    transition: 300ms 0ms, opacity 700ms 100ms, filter 700ms 100ms,transform 700ms 100ms !important;
-}
-
-.flipUp {
-    opacity: 1;
-    transform: translateY(0px) scale(1) rotateX(90deg);
-    transition-delay: calc(120ms*var(--img)) !important;
-}
-
-.fadeIn {
-    transform: translateY(0px);
-    transition: opacity 300ms 100ms;
-}
-
-.aboutP {
-    transition-delay: calc(120ms*var(--abt)) !important;
-}
-
-.footerA {
-    transition-delay: calc(100ms*var(--footerA)) !important;
-}
-
-.show {
-    opacity: 1;
-    transform: translateY(0px) scale(1) rotateX(0deg);
-}
-
-@media (prefers-reduced-motion) {
-    .hidden {
-        transition: none;
-    }
-}
-
 
 /* ---------- navbar ---------- */
 
@@ -405,9 +369,10 @@ header .arrowDown i:hover {
 
 .imgWrapper {
     aspect-ratio: 5 / 3;
+    transform: scaleY(1);
     border-radius: 8px;
     overflow: hidden;
-    /* transition: opacity 500ms 0s, visibility 500ms 0s, height 1s 0s, width 1s 0s; */
+    transition: transform 500ms, height 500ms;
 }
 
 .imgWrapper img {
@@ -423,8 +388,23 @@ header .arrowDown i:hover {
     filter: saturate(115%) contrast(110%);
 }
 
-.disableImg {visibility: hidden;opacity: 0;height: 0;width: 0;}
-.activeImg {visibility: visible;opacity: 1;height: auto;width: auto;}
+.col {
+    transform: scaleX(1);
+    transition: 500ms;
+}
+.col:has(.disableImg):not(.col:has(.activeImg)) {
+    transform: scaleX(0);
+}
+.col:has(.activeImg).imgWrapper {}
+
+.disableImg {
+    height: 0;
+    transform: scaleY(0);
+}
+.activeImg {
+    height: 100%;
+    transform: scaleY(1);
+}
 
 
 /* ---------- About us section ---------- */
@@ -712,5 +692,45 @@ footer input[type="submit"]:active {
     to {
         transform: translateY(0px);
         opacity: 1;
+    }
+}
+
+
+/* ---------- AOS ---------- */
+
+
+.hidden {
+    opacity: 0;
+    transform: translateY(100px) scale(1.05);
+    transition: 300ms 0ms, opacity 700ms 100ms, filter 700ms 100ms,transform 700ms 100ms !important;
+}
+
+.flipUp {
+    opacity: 1;
+    transform: translateY(0px) scale(1) rotateX(90deg);
+    transition-delay: calc(120ms*var(--img)) !important;
+}
+
+.fadeIn {
+    transform: translateY(0px);
+    transition: opacity 300ms 100ms;
+}
+
+.aboutP {
+    transition-delay: calc(120ms*var(--abt)) !important;
+}
+
+.footerA {
+    transition-delay: calc(100ms*var(--footerA)) !important;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0px) scale(1) rotateX(0deg);
+}
+
+@media (prefers-reduced-motion) {
+    .hidden {
+        transition: none;
     }
 }
