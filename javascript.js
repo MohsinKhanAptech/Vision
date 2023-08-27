@@ -107,21 +107,21 @@ const imgContainer = document.getElementById('imgContainer')
 const imgDiv = document.querySelectorAll('.imgWrapper');
 const col = document.querySelectorAll('.col')
 
-for (let i = 0; i < imgDiv.length; i++) {
-    const div = imgDiv[i];
-    div.addEventListener('click', () => {
-        div.classList.toggle('activeImg');
+// for (let i = 0; i < imgDiv.length; i++) {
+//     const div = imgDiv[i];
+//     div.addEventListener('click', () => {
+//         div.classList.toggle('activeImg');
+//         imgContainer.classList.toggle('gap');
+//         col.forEach(x=>x.classList.toggle('gap'));
+//         imgDiv.forEach(x=>x.classList.toggle('disableImg'));
+//     })
+// }
+
+for (const x of imgDiv) {
+    x.addEventListener('click', () => {
+        x.classList.toggle('activeImg');
         imgContainer.classList.toggle('gap');
-        col.forEach(x=>x.classList.toggle('gap'));
-    })
-    div.addEventListener('click', () => {
-        imgDiv.forEach(x=>x.classList.toggle('disableImg'));
+        for (const y of col) {y.classList.toggle('gap')};
+        for (const z of imgDiv) {z.classList.toggle('disableImg')}
     })
 }
-
-// imgDiv.forEach(x=>x.addEventListener('click', () => {
-//     imgDiv.forEach(x.classList.toggle('activeImg'));
-// }))
-// imgDiv.forEach(x=>x.addEventListener('click', () => {
-//     imgDiv.forEach(x=>x.classList.toggle('disableImg'));
-// }))

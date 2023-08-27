@@ -372,6 +372,7 @@ header .arrowDown i:hover {
     transform: scaleY(1);
     border-radius: 8px;
     overflow: hidden;
+    cursor: zoom-in;
     transition: transform 500ms, height 500ms;
 }
 
@@ -395,7 +396,7 @@ header .arrowDown i:hover {
 .col:has(.disableImg):not(.col:has(.activeImg)) {
     transform: scaleX(0);
 }
-.col:has(.activeImg).imgWrapper {}
+/* .col:has(.activeImg).imgWrapper {} */
 
 .disableImg {
     height: 0;
@@ -404,6 +405,7 @@ header .arrowDown i:hover {
 .activeImg {
     height: 100%;
     transform: scaleY(1);
+    cursor: zoom-out;
 }
 
 
