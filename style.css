@@ -100,7 +100,7 @@ nav ul li {
 nav ul li a {
     display: block;
     color: var(--white-100);
-    font-size: large;
+    font-size: clamp(0.8rem, 8vw, 1.2rem);
     text-transform: capitalize;
     text-decoration: none;
     padding: 1rem 1.5rem;
@@ -116,7 +116,7 @@ nav ul li a:hover {
 
 nav img {
     content: var(--logo-light);
-    max-height: 50px;
+    height: clamp(30px, 9vw, 50px);
 }
 
 nav img.dark {content: var(--logo-dark);}
@@ -189,7 +189,7 @@ header button {
     color: var(--white-100);
     text-transform: capitalize;
     font-size: 1rem;
-    padding: 1rem calc(2rem - 10px) 1rem 2rem;
+    padding: clamp(0.5rem, 4vw, 1rem) clamp(1.5rem, 4vw, 2rem);
     margin: 1rem 0 0 0;
     border: 2px solid var(--accent-color-1);
     border-radius: 8px;
@@ -204,14 +204,14 @@ header button:hover {
 }
 
 header button i {
-    margin: 0 8px 0 2px;
+    margin: 0 0 0 2px;
     padding: 0;
     color: var(--white-100);
-    transition: margin 300ms;
+    transition: transform 300ms;
 }
 
 header button:hover i {
-    margin: 0 0 0 10px;
+    transform: translateX(8px);
 }
 
 header .arrowDown {
@@ -246,8 +246,7 @@ header .arrowDown i:hover {
 }
 
 .subSections {
-    width: 70%;
-    max-width: 1500px;
+    width: min(70%, 1500px);
     padding: 8rem;
     margin: 0;
     border-radius: 1rem;
@@ -648,14 +647,22 @@ footer input[type="submit"]:active {
     .dropdown {right: 10px;}
     .subSections {
         width: 80%;
-        padding: 5rem 3rem;
+        padding: 4rem;
     }
     h1 {font-size: 1.8rem !important;}
 }
 @media (max-width:576px) {
     .subSections {
         width: 100%;
+        padding: 4rem 2.5rem;
     }
+    footer {padding: 8rem 2.5rem;}
+}
+@media (max-width:384px) {
+    h1 {font-size: 1.45rem !important;}
+    p {font-size: 1rem !important;}
+    header button {font-size: 0.9rem;}
+    footer {padding: 8rem 0.75rem;}
 }
 
 
