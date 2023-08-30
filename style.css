@@ -29,8 +29,8 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    background: rgb(255,105,180);
-    background: linear-gradient(172deg, rgba(255,105,180,1) 0%, rgba(192,96,203,1) 6%, rgba(127,89,219,0.75) 12%, rgba(0,0,0,0) 24%);
+    background: var(--accent-color-2);
+    background: linear-gradient(172deg, var(--accent-color-2) 0%, rgba(192,96,203,1) 6%, rgba(127,89,219,0.75) 12%, rgba(0,0,0,0) 24%);
     background-color: var(--white-100);
 }
 
@@ -532,7 +532,7 @@ footer ul li a:hover::before {
     border: 2px solid var(--black-100);
     border-radius: 4px;
     padding: 8px;
-    min-width: calc(30vmin + 80px);
+    min-width: calc(30vmin + 82px);
     max-width: 10rem;
 }
 
@@ -663,6 +663,7 @@ footer input[type="submit"]:active {
     p {font-size: 1rem !important;}
     header button {font-size: 0.9rem;}
     footer {padding: 8rem 0.75rem;}
+    .inp {translate: -1rem;}
 }
 
 
