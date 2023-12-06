@@ -1,6 +1,6 @@
 # Aptech Vision Project
 
-Live Preview: (Click Here)[https://mohsinkhanaptech.github.io/Vision/]
+Live Preview: https://mohsinkhanaptech.github.io/Vision/
 
 these are the Aptech Vision project files.  <br>
 worked hard on this project alone since my team member (Sabeer) wasnt co-operating.  <br>
